@@ -32,6 +32,7 @@ class Choices:
         'EQUIPEMENTS',
         'ABONNES',
         'CONSOMMATIONSMENSUELLES',
+        'CATEGORIESDESUPPORTS',
         'CONDITIONSMETEOROLOGIQUES',
         'BRIS'
     ]
@@ -40,19 +41,31 @@ class Choices:
         Brief: This list represents all the possible "Categories" of "Centrales" 
     """
     centrales =  [
-        'Parc éolien',
-        'Centrale thermique',
-        'Centrale hydroélectrique',
-        'Centrale solaire photovoltaïque'
+        'PARC EOLIEN',
+        'CENTRALE THERMIQUE',
+        'CENTRALE HYDROELECTRIQUE',
+        'CENTRALE SOLAIRE PHOTOVOLTAIQUE'
     ]
     
     """
         Brief: This list represents all the possible "Categories" of "Lignes" 
     """
     lignes =  [
-        'Câble conducteur',
-        'Câble de garde',
-        'Hauban'
+        'CABLE CONDUCTEUR',
+        'CABLE DE GARDE',
+        'HAUBAN'
+    ]
+
+    supports = [
+        ['SOUS-TERRAIN', 100, 0, 0],
+        ['PYLONE MAE WEST', 120, 100, 100],
+        ['PYLONE CLASSIQUE', 110, 120, 200],
+        ['PYLONE HAUBANE EN V', 100, 100, 100],
+        ['PYLONE TUBULAIRE', 200, 150, 100],
+        ['PYLONE HAUBANE A CHAINETTE',220, 100, 90],
+        ['PYLONE DE TRAVERSEE', 120, 110, 100],
+        ['PYLONE A TREILLIS', 100, 100, 90],
+        ['POTEAU DE BOIS', 20, 60, 5]
     ]
    
     """

@@ -33,9 +33,10 @@ class Edge:
         self.graph.tuples["LIGNES"].append([l_id,
                                             random.randint(500, 10000),
                                             random.randint(500, 10000),
-                                            random.choice(Choices.lignes),
+                                            random.randint(10, 10000),
                                             init_node,
-                                            dest_node])
+                                            dest_node,
+                                            random.choice(Choices.lignes)])
     
 
     """
@@ -50,7 +51,8 @@ class Edge:
             self.graph.tuples["EQUIPEMENTS"].append([s_id])
             self.graph.tuples["SUPPORTS"].append([s_id,
                                                   l_id,
-                                                  util.create_location(self.graph.boundaries)])
+                                                  util.create_location(self.graph.boundaries),
+                                                  random.choice(Choices.supports)[0]])
             
             
 

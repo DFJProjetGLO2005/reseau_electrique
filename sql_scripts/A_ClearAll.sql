@@ -14,3 +14,5 @@ DROP TABLE IF EXISTS Bris;
 DROP TABLE IF EXISTS Equipements;
 DROP TABLE IF EXISTS ConditionsMeteorologiques;
 DROP TABLE IF EXISTS Villes;
+
+#clear triggers?

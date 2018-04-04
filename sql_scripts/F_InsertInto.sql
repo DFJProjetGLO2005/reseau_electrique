@@ -2,7 +2,7 @@ LOAD DATA LOCAL INFILE "../csv_files/ABONNES.csv"
 INTO TABLE Abonnes
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
-(Aid, Nom, Age, Telephone, PointDeRaccordement);
+(Aid, Nom, Telephone, PointDeRaccordement);
 
 LOAD DATA LOCAL INFILE "../csv_files/CONSOMMATIONSMENSUELLES.csv"
 INTO TABLE ConsommationsMensuelles
@@ -20,23 +20,33 @@ LOAD DATA LOCAL INFILE "../csv_files/CENTRALES.csv"
 INTO TABLE Centrales
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
-(Eid, PosteSource, Puissance, Categorie);
+(Eid, PosteSource, Categorie, Puissance);
 
 
 LOAD DATA LOCAL INFILE "../csv_files/LIGNES.csv"
 INTO TABLE Lignes
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
-(Eid, Tension, Courant, Longueur, Poste1, Poste2);
+(Eid, Tension, Courant, Longueur, Poste1, Poste2, Categorie);
 
-###################################################
-###################################################
-## DIVISER SUPPORTS ET CATEGORIES DE SUPPORTS #####
-#LOAD DATA LOCAL INFILE "../csv_files/SUPPORTS.csv"
-#INTO TABLE Supports
-#FIELDS TERMINATED BY ','
-#OPTIONALLY ENCLOSED BY '"'
-#(Eid, Ligne, Courant, Lieu, Categorie);
+
+DROP TABLE IF EXISTS TempSupports;
+CREATE TABLE TempSupports (Eid CHAR(9), Ligne CHAR(9), Lieu CHAR(255), Categorie CHAR(255));
+LOAD DATA LOCAL INFILE "../csv_files/SUPPORTS.csv"
+INTO TABLE TempSupports
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+(Eid, Ligne, Lieu, Categorie);
+INSERT INTO Supports (Eid, Ligne, Lieu, Categorie)
+SELECT T.Eid, T.Ligne, POLYGONFromText(T.Lieu), T.Categorie FROM TempSupports T;
+DROP TABLE TempSupports;
+
+
+LOAD DATA LOCAL INFILE "../csv_files/CATEGORIESDESUPPORTS.csv"
+INTO TABLE CategoriesDeSupports
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+(Categorie, Portee, Poids, Hauteur);
 
 
 DROP TABLE IF EXISTS TempPostes;
@@ -86,6 +96,8 @@ INTO TABLE Bris
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 (Eid, Debut, Fin);
+
+
 
 DROP TABLE IF EXISTS TempVilles;
 CREATE TABLE TempVilles (Nom CHAR(35), Lieu CHAR(255));

@@ -1,4 +1,5 @@
 import random, os, platform
+from choices import Choices
 
 def create_location(boundaries):
     lat = round(random.uniform(0, boundaries[1]), 3)
@@ -6,6 +7,14 @@ def create_location(boundaries):
     if lat == int(lat): lat += 0.001
     if lon == int(lon): lon += 0.001
     return '"POINT({} {})"'.format(lat, lon)
+
+def gen_categories_supports(graph):
+    for c in Choices.supports:
+        graph.tuples["CATEGORIESDESUPPORTS"].append(c)
+
+
+
+
 
 
 def display_loading(text, loading_ratio):

@@ -1,3 +1,6 @@
+ALTER TABLE Abonnes
+ADD FOREIGN KEY (PointDeRaccordement) REFERENCES PointsDeRaccordement (Eid);
+
 ALTER TABLE ConsommationsMensuelles
 ADD FOREIGN KEY (Aid) REFERENCES Abonnes(Aid);
 
@@ -5,7 +8,7 @@ ADD FOREIGN KEY (Aid) REFERENCES Abonnes(Aid);
 
 ALTER TABLE Centrales
 ADD FOREIGN KEY (Eid) REFERENCES Equipements(Eid),
-ADD FOREIGN KEY (Eid) REFERENCES Sources(Eid);
+ADD FOREIGN KEY (PosteSource) REFERENCES Sources(Eid);
 
 ALTER TABLE Lignes
 ADD FOREIGN KEY (Eid) REFERENCES Equipements(Eid),

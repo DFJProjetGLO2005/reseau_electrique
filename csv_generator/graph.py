@@ -5,11 +5,7 @@ from source import Source
 from edge import Edge
 from node import Node
 from city import CityGenerator
-from bris import gen_bris
-from meteo import gen_meteo
 
-
-### VERIFIER SI tous les équipements sont dans EQUIEPEMENTS
 
 """
     Brief: This class creates a directed acyclic graph representing an electricity network.
@@ -73,6 +69,9 @@ class Graph:
                 f.write("\n")
             f.close()
 
+    """
+        Brief: This method creates the directory where the csv files will be stored
+    """
     @staticmethod
     def create_csv_dir():
         abspath = os.path.abspath(__file__)

@@ -2,9 +2,8 @@ CREATE TABLE Abonnes
 (
     Aid INT,
     Nom CHAR(20),
-    Age INT,
     Telephone CHAR(8),
-    PointDeRaccordement INT
+    PointDeRaccordement CHAR(9)
 );
 
 CREATE TABLE ConsommationsMensuelles
@@ -23,11 +22,11 @@ CREATE TABLE Centrales
 (
     Eid CHAR(9),
     PosteSource CHAR(9),
-    Puissance INT,
-    Categorie ENUM('Parc éolien',
-                   'Centrale thermique',
-                   'Centrale hydroélectrique',
-                   'Centrale solaire photovoltaïque')
+    Categorie ENUM('PARC EOLIEN',
+                   'CENTRALE THERMIQUE',
+                   'CENTRALE HYDROELECTRIQUE',
+                   'CENTRALE SOLAIRE PHOTOVOLTAIQUE'),
+    Puissance INT
 );
 
 CREATE TABLE Lignes
@@ -38,40 +37,39 @@ CREATE TABLE Lignes
     Longueur INT,
     Poste1 CHAR(9),
     Poste2 CHAR(9),
-    Categorie ENUM('Câble conducteur',
-                   'Câble de garde',
-                   'Hauban')
+    Categorie ENUM('CABLE CONDUCTEUR',
+                   'CABLE DE GARDE',
+                   'HAUBAN')
 );
 
 CREATE TABLE Supports
 (
     Eid CHAR(9),
     Ligne CHAR(9),
-    Courant INT,
     Lieu GEOMETRY,
-    Categorie ENUM('Sous-terrain',
-                   'Pylône Mae West',
-                   'Pylône Classique',
-                   'Pylône Haubané en V',
-                   'Pylône Tubulaire',
-                   'Pylône Haubané à chaînette',
-                   'Pylône de traversée',
-                   'Pylône à treillis',
-                   'Poteau de bois')
+    Categorie ENUM('SOUS-TERRAIN',
+                   'PYLONE MAE WEST',
+                   'PYLONE CLASSIQUE',
+                   'PYLONE HAUBANE EN V',
+                   'PYLONE TUBULAIRE',
+                   'PYLONE HAUBANE A CHAINETTE',
+                   'PYLONE DE TRAVERSEE',
+                   'PYLONE A TREILLIS',
+                   'POTEAU DE BOIS')
 );
 
 
 CREATE TABLE CategoriesDeSupports
 (
-    Categorie ENUM('Sous-terrain',
-                   'Pylône Mae West',
-                   'Pylône Classique',
-                   'Pylône Haubané en V',
-                   'Pylône Tubulaire',
-                   'Pylône Haubané à chaînette',
-                   'Pylône de traversée',
-                   'Pylône à treillis',
-                   'Poteau de bois'),
+    Categorie ENUM('SOUS-TERRAIN',
+                   'PYLONE MAE WEST',
+                   'PYLONE CLASSIQUE',
+                   'PYLONE HAUBANE EN V',
+                   'PYLONE TUBULAIRE',
+                   'PYLONE HAUBANE A CHAINETTE',
+                   'PYLONE DE TRAVERSEE',
+                   'PYLONE A TREILLIS',
+                   'POTEAU DE BOIS'),
     Portee INT,
     Poids INT,
     Hauteur INT
@@ -108,7 +106,7 @@ CREATE TABLE TransformateursSurPoteauDeBois(
 CREATE TABLE Bris (
     Eid CHAR(9),
     Debut TIMESTAMP,
-    Fin TIMESTAMP
+    Fin TIMESTAMP NULL
 ); 
 
 

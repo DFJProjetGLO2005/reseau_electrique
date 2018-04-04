@@ -50,7 +50,7 @@ class Source:
         Brief: This method creates the specifications for the "Centrale"
     """
     def create_centrale_specs(self):
-        c_categorie = random.choice(Choices.centrales), 
+        c_categorie = random.choice(Choices.centrales)
         c_puissance = round(random.uniform(4, 5000), 3)
         return c_categorie, c_puissance
 

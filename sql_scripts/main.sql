@@ -1,24 +1,7 @@
 SET FOREIGN_KEY_CHECKS=0;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# VILLE POUR UNE LIGNE? concaténer les deux villes
+# Séparation de supports
 
 source A_ClearAll.sql
 source B_CreateTables.sql
