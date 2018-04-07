@@ -121,6 +121,7 @@ CREATE TABLE ConditionsMeteorologiques
 ( 
     Ville CHAR(35),
     Heure TIMESTAMP,
+    Temperature INT,
     Humidite REAL,
     PressionAtmospherique REAL,
     ChuteDePluie INT,

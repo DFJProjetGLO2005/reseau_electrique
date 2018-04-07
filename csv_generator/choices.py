@@ -73,9 +73,9 @@ class Choices:
                for every type of Node.
     """
     max_output_edges = {
-        'SOURCES' : 4,
-        'STRATEGIQUES' : 4,
-        'SATELLITES' : 4,
+        'SOURCES' : 3,
+        'STRATEGIQUES' : 3,
+        'SATELLITES' : 3,
         'TRANSFORMATEURS' : 6,
         'POINTSRACCORDEMENT' : 0
     }

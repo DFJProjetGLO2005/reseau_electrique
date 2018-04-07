@@ -115,5 +115,5 @@ LOAD DATA LOCAL INFILE "../csv_files/CONDITIONSMETEOROLOGIQUES.csv"
 INTO TABLE ConditionsMeteorologiques
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
-(Ville, Heure, Humidite, PressionAtmospherique, ChuteDePluie, ChuteDeNeige, CouvertureDeNeige);
+(Ville, Heure, Temperature, Humidite, PressionAtmospherique, ChuteDePluie, ChuteDeNeige, CouvertureDeNeige);
 
