@@ -1,6 +1,12 @@
 import dill as pickle
 import random
 
+"""
+    Brief: Cette fonction génère un abonné aléatoirement au réseau électrique.
+    Arg[p_id]: L'identificateur du point de raccordement associé à l'utilisateur.
+    Arg[graph]: Une instance de Graph pour laquelle on désire associer l'abonné.
+    Return: L'identificateur de l'abonné sous forme de Int.
+"""
 def gen_abonnnes(p_id, graph):
     aid = len(graph.tuples["ABONNES"])
     f = open("data/names.pkl", "rb")
@@ -13,7 +19,14 @@ def gen_abonnnes(p_id, graph):
     gen_consommations_mensuelles(aid, graph)
     return aid
 
-
+"""
+    Brief: Cette fonction génère des consommations mensuelles aléatoires par mois pour
+           un abonné pour toute la plage temporelle d'une instance de Graphe.
+           Par souci de réalisme, chaque abonné aura une consommation plus ou moins
+           changeante de mois en mois.
+    Arg[aid]: L'identificateur de l'abonné
+    Arg[graph]: L'instance de Graph pour laquelle on veut créer ces consommations.
+"""
 def gen_consommations_mensuelles(aid, graph):
     min_puissance = random.randint(1000,10000)
     variation = random.randint(100, 3000)

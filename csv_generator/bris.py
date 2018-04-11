@@ -1,17 +1,24 @@
 import random
 
+"""
+    Brief: Cette fonction génère une quantité aléatoires de bris pour
+           des équipements choisis aléatoirements. Ceux-ci auront un
+           moment de départ aléatoire et auront deux chances sur trois
+           d'être déjà marqués comme résolus. La date de résolution est
+           aussi aléatoire.
+"""
 def gen_bris(graph):
-    bris_qty = random.randint(10, 100)
+    bris_qty = random.randint(20, 100)
     for i in range(bris_qty):
         eid = random.choice(graph.tuples["EQUIPEMENTS"])[0]
         d_annee = random.randint(graph.time_limits[0], graph.time_limits[1] - 1) 
         d_mois = random.randint(1, 12)
-        d_jour = random.randint(0, 27)
+        d_jour = random.randint(1, 27)
         d_heure = random.randint(0, 23)
         d_minute = random.randint(0, 59)
         d_seconde = random.randint(0, 59)
         debut = "{0:4=0d}-{1:2=0d}-{2:2=0d} {3:2=0d}:{4:2=0d}:{5:2=0d}".format(d_annee, d_mois, d_jour, d_heure, d_minute, d_seconde)
-        if random.choice([0,0,0,1]):
+        if random.choice([1,1,0]):
             f_annee = random.randint(d_annee, graph.time_limits[1] - 1) 
             f_min_mois = d_mois if f_annee == d_annee else 1
             f_mois = random.randint(f_min_mois, 12)

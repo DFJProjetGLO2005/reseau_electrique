@@ -28,6 +28,10 @@ class Choices:
         'POINTSRACCORDEMENT'
     ]
 
+    """
+        Brief: This list represents all other csv files that aren't 
+               related to a particular category.
+    """
     misc = [
         'EQUIPEMENTS',
         'ABONNES',
@@ -47,15 +51,16 @@ class Choices:
         'CENTRALE SOLAIRE PHOTOVOLTAIQUE'
     ]
     
-    """
-        Brief: This list represents all the possible "Categories" of "Lignes" 
-    """
     lignes =  [
         'CABLE CONDUCTEUR',
         'CABLE DE GARDE',
         'HAUBAN'
     ]
 
+    """
+        Brief: This list represents all the possible "Categories" of "Supports"
+               and their respective characteristics. 
+    """
     supports = [
         ['SOUS-TERRAIN', 100, 0, 0],
         ['PYLONE MAE WEST', 120, 100, 100],

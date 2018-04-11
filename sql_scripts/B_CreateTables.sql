@@ -9,7 +9,7 @@ CREATE TABLE Abonnes
 CREATE TABLE ConsommationsMensuelles
 (
     Aid INT,
-    Mois TIMESTAMP,
+    Mois DATETIME,
     Puissance INT
 );
 
@@ -105,8 +105,8 @@ CREATE TABLE TransformateursSurPoteauDeBois(
 
 CREATE TABLE Bris (
     Eid CHAR(9),
-    Debut TIMESTAMP,
-    Fin TIMESTAMP NULL
+    Debut DATETIME,
+    Fin DATETIME NULL
 ); 
 
 
@@ -120,7 +120,7 @@ CREATE TABLE Villes
 CREATE TABLE ConditionsMeteorologiques
 ( 
     Ville CHAR(35),
-    Heure TIMESTAMP,
+    Heure DATETIME,
     Temperature INT,
     Humidite REAL,
     PressionAtmospherique REAL,

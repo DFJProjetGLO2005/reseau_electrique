@@ -8,28 +8,7 @@ delimiter //
 
 
 
-#CREATE TRIGGER InsertionPoste
-#BEFORE INSERT ON Postes
-#FOR EACH ROW
-#BEGIN
-#    INSERT INTO Equipements (Eid) VALUES (NEW.Eid);
-#    IF (NEW.Eid LIKE "TRAN%")
-#    THEN INSERT INTO TransformateursSurPoteauDeBois (Eid) VALUES (NEW.Eid);
-#    ELSEIF (NEW.Eid LIKE "SATE%")
-#    THEN INSERT INTO Satellites (Eid) VALUES (NEW.Eid);
-#    ELSEIF (NEW.Eid LIKE "SOUR%")
-#    THEN INSERT INTO Sources (Eid, Centrale) VALUES (NEW.Eid, NEW.Centrale);
-#    #ELSE IF (NEW.Eid LIKE "RACC%")
-#    #THEN INSERT INTO PointsDeRaccordement (Eid) VALUES (NEW.Eid);
-#    END IF;
-#END//
-
-#CREATE TRIGGER InsertionLigne
-
-#CREATE TRIGGER InsertionCentrale
-
-#CREATE TRIGGER InsertionSupports
-
+#CREATE PROCEDURE PrevenirSuperpositionBris (INOUT )
 
 
 CREATE PROCEDURE PrevenirSuperpositionVilles (INOUT Nom CHAR(35), IN Lieu GEOMETRY)

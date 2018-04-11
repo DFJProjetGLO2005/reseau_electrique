@@ -1,5 +1,6 @@
 import pymysql
 
+
 class Requetes:
     def __init__(self, user, password):
         self.con = pymysql.connect( host='localhost',
@@ -14,26 +15,44 @@ class Requetes:
 
     #####################################################################
 
-    def get_bris(self):
+    def get_liste_bris(self, priorite):
         liste_bris = []
         bris = self.execute("SELECT Eid, Debut FROM Bris WHERE Fin IS NOT NULL;")
         for b in bris:
-            liste_bris.append({"eid" : b[0],
-                               "nom" : self.get_equipement_nom(b[0]),
-                               "ville" : self.__trouver_ville(b[0]),
-                               "date" : b[1]})
+            eid = b[0]
+            debut = b[1]
+            raccordements = []
+            self.__trouver_raccordements(eid, raccordements)
+            aids = self.__trouver_abonnes_racc(raccordements)
+            nom = self.get_equipement_nom(eid)
+            ville = self.__trouver_ville(eid)[0][0]
+            estimation_conso = self.__estimation_conso(aids, debut)
+            meteo = self.trouver_meteo(ville, debut)
+            liste_bris.append({"eid" : eid,
+                               "nom" : nom,
+                               "ville" : ville,
+                               "date" : debut,
+                               "nb_abonnes": len(raccordements),
+                               "aid" : aids,
+                               "estimation_conso": estimation_conso,
+                               "meteo" : meteo})
+            liste_bris = sorted(liste_bris, key=lambda bris: bris[priorite])[::-1]
         return liste_bris
 
 
-    def get_equipement_nom(self,eid):
+
+
+
+
+    def get_equipement_nom(self, eid):
         if eid[0:4] == "SUPP":
-            return "Support: " + self.execute('SELECT Categorie FROM Supports WHERE Eid="{}";'.format(eid)) 
+            return "Support: " + self.execute('SELECT Categorie FROM Supports WHERE Eid="{}";'.format(eid))[0][0] 
         elif eid[0:4] == "SOUR":
             return "Poste source"
         elif eid[0:4] == "CENT":
-            return self.execute('SELECT Categorie FROM Centrales WHERE Eid="{}";'.format(eid))
+            return self.execute('SELECT Categorie FROM Centrales WHERE Eid="{}";'.format(eid))[0][0]
         elif eid[0:4] == "LIGN":
-            return "Ligne: " + self.execute('SELECT Categorie FROM Lignes WHERE Eid="{}";'.format(eid))
+            return "Ligne: " + self.execute('SELECT Categorie FROM Lignes WHERE Eid="{}";'.format(eid))[0][0]
         elif eid[0:4] == "RACC":
             return "Point de raccordement"
         elif eid[0:4] == "SATE":
@@ -45,50 +64,33 @@ class Requetes:
         
 
 
-
-    def details_bris(self, eid, debut, ville):
-        raccordements = []
-        self.__trouver_raccordements(eid, raccordements)
-        aids = self.__trouver_abonnes_racc(raccordements)
-        return {"nb_abonnes" : len(raccordements),
-                "aids" : aids,
-                "estimation_conso" : self.__consommations_futures_estimees(aids, debut),
-                "meteo" : self.trouver_meteo(ville, debut)}
-
-    def trouver_meteo(self, ville, heure):
-        # warning
-        meteo = self.execute("SELECT * FROM ConditionsMeteorologiques WHERE Ville='{0}' AND\
-                              (TIME_TO_SEC(TIMEDIFF(Heure, '{1}')) < 3600) LIMIT 1;".format(ville, heure))
-        print(meteo)
-
-        
     def __trouver_raccordements(self, eid, raccordements):
         if eid[0:4] == "SUPP":
-            eid = self.execute('SELECT Poste2 FROM Lignes WHERE Eid=(SELECT Ligne FROM Supports WHERE Eid="{}");'.format(eid))
+            eid = self.execute('SELECT Poste2 FROM Lignes WHERE Eid=(SELECT Ligne FROM Supports WHERE Eid="{}");'.format(eid))[0][0]
         elif eid[0:4] == "LIGN":
-            eid = self.execute('SELECT Poste2 FROM Lignes WHERE Eid="{}";'.format(eid))
+            eid = self.execute('SELECT Poste2 FROM Lignes WHERE Eid="{}";'.format(eid))[0][0]
         elif eid[0:4] == "CENT":
-            eid = self.execute('SELECT PosteSource FROM Centrales WHERE Eid={};'.format(eid))
+            eid = self.execute('SELECT PosteSource FROM Centrales WHERE Eid={};'.format(eid))[0][0]
         new_eids = self.execute('SELECT Poste2 FROM Lignes WHERE Poste1="{}";'.format(eid))
         if len(new_eids) == 0:
             raccordements.append(eid) 
         for e in new_eids:
-            self.__trouver_raccordements(e, raccordements)
+            self.__trouver_raccordements(e[0], raccordements)
+
 
     def __trouver_abonnes_racc(self, raccordements):
         abonnes = []
         for r in raccordements:
-            abonnes.append(self.execute('SELECT Aid FROM Abonnes WHERE PointDeRaccordement="{}";'.format(r)))
+            abonnes.append(self.execute('SELECT Aid FROM Abonnes WHERE PointDeRaccordement="{}";'.format(r))[0][0])
         return abonnes
 
-    def __consommations_futures_estimees(self, aids, debut):
+    def __estimation_conso(self, aids, debut):
         estimation = 0
-        for aid in aids:
+        for aid in aids: 
             req = 'SELECT AVG(Puissance)\
                    FROM ConsommationsMensuelles\
                    WHERE Aid={0} AND (DATEDIFF("{1}", Mois) < 93) AND Mois < "{1}";'.format(aid, debut)
-            estimation += self.execute(req)
-        estimation /= len(aids)
+            estimation += self.execute(req)[0][0]
         return float(estimation)
 
 
@@ -110,6 +112,18 @@ class Requetes:
         return ville
 
 
+    def trouver_meteo(self, ville, heure):
+        meteo = self.execute('SELECT *\
+                             FROM ConditionsMeteorologiques\
+                             WHERE Ville="{0}"\
+                             AND DATEDIFF(Heure, "{1}")=0\
+                             AND ABS(TIMEDIFF(Heure, "{1}"))<=5959;'.format(ville, heure))[0]
+        return {"Temperature" : meteo[2],
+                "Humidite" : meteo[3],
+                "Pression" : meteo[4],
+                "Pluie" : meteo[5],
+                "Neige" : meteo[6],
+                "Couverture neige" : meteo[7]}
 
 
     #########################################################################
@@ -123,8 +137,6 @@ class Requetes:
             line = []
             for attr in tup:
                 line.append(attr)
-            if len(line) == 1: line = line[0]
             result.append(line)
-        if len(result) == 1: result = result[0]
         return result
 
