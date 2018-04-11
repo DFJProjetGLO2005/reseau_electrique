@@ -11,7 +11,7 @@ from listeConsommationsMensuelles import ListeConsommationsMensuelles
 
 
 if __name__ == "__main__":
-    req = Requetes('root', 'tetuda')
+    req = Requetes(input("user"), input("password"))
     test = {'eid': 'SUPP24046',
     'date': "2016-05-09 23:02:52",
     'nom': 'Support: PYLONE HAUBANE A CHAINETTE',
