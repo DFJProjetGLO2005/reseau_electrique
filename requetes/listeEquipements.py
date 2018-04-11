@@ -16,4 +16,4 @@ class ListeEquipements:
                                     WHEN Eid LIKE "STRA%" THEN "STRA"\
                                     WHEN Eid LIKE "SOUR%" THEN "SOUR"\
                                END);'.format(polygon))
-       return ville, postes[0]
+       return ville, postes
