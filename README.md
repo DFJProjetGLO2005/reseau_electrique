@@ -1,8 +1,8 @@
-Pour tester l'application sur votre système, veuillez exécuter le script python "installation.py".
-Celui-ci vous permettra de:
-    .générer les données ./csv_generator/main.py
-    .générer la base de données ./sql_scripts/main.sql
-    .démarrer le serveur web ./siteweb/serveur_applicatif.py
+Pour tester l'application sur votre système, veuillez exécuter le script python "installation.py".</br>
+Celui-ci vous permettra de:</br>
+.&nbsp;&nbsp;&nbsp;&nbsp;générer les données ./csv\_generator/main.py</br>
+.&nbsp;&nbsp;&nbsp;&nbsp;générer la base de données ./sql\_scripts/main.sql</br>
+.&nbsp;&nbsp;&nbsp;&nbsp;démarrer le serveur web ./siteweb/serveur\_applicatif.py</br>
 
 
 
