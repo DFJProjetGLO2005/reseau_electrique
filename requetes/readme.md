@@ -4,6 +4,8 @@
  Dans les exemples suivants on imagine que "req" est une instance
  de Requetes.
 
+# Schéma du site web
+![alt text](https://i.imgur.com/qH5ukFj.jpg)
 
 listeBris.html
 --------------

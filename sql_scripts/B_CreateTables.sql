@@ -1,3 +1,5 @@
+SELECT "Creation des tables..." as "";
+
 CREATE TABLE Abonnes
 (
     Aid INT,
@@ -12,7 +14,6 @@ CREATE TABLE ConsommationsMensuelles
     Mois DATETIME,
     Puissance INT
 );
-
 
 
 

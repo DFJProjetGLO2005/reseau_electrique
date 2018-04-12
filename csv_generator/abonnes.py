@@ -32,7 +32,7 @@ def gen_consommations_mensuelles(aid, graph):
     variation = random.randint(100, 3000)
     max_puissance = min_puissance + variation
     for y in range(graph.time_limits[0], graph.time_limits[1]):
-        for m in range(1,12):
+        for m in range(1,13):
             mois = "{0:4=0d}-{1:2=0d}-01 00:00:00".format(y, m)
             puissance = round(random.uniform(min_puissance, max_puissance) , 3)
             graph.tuples['CONSOMMATIONSMENSUELLES'].append([aid, mois, puissance])

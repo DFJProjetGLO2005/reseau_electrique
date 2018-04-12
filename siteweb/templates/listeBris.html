@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title> Réseau électrique: liste des bris </title>
+    </head>
+    <body>
+        Voici la liste des bris qui sont actuellement non-résolus.<br><br>
+        <table border=1><form method="post">
+            <tr> <td>Nom de l'équipement</td><td>Ville</td><td>Date du bris</td>
+            {% for I in IN %}
+            <tr> <td>{{ I['nom'] }}</td><td>{{ I['ville'] }}</td><td>{{I['date']}}</td><td><button name="bris_choisi" value="{{I['eid']}}@{{I['date']}}">Détails</button></td> </tr>
+            {% endfor %}
+        </form></table>
+        <br>
+        <br> Navigation
+        <br>
+        <a href="/">Menu principal</a><br>
+    </body>
+</html>

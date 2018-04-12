@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title> Réseau électrique: Historique de consommations </title>
+    </head>
+    <body>
+        Voici l'historique de consommation de l'abonné {{abonne}}.<br><br>
+        <table border=1>
+            <tr><td>Annee</td><td>Mois</td><td>Consommation</td></tr>
+            {% for I in IN %}
+            <tr><td>{{I[0][0:4]}}</td><td>{{I[0][5:]}}</td><td>{{I[1]}} kW/h</td>
+            {% endfor %}
+        </table>
+        <br>
+        <br> Navigation
+        <br>
+        <a href="/listeAbonnes">Liste des abonnés</a><br>
+        <a href="/detailsBris">Détails du bris</a><br>
+        <a href="/listeBris">Liste des bris non résolus</a><br>
+        <a href="/">Menu principal</a><br>
+    </body>
+</html>

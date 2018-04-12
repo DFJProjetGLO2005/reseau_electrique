@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title> Réseau électrique: liste d'abonnés </title>
+    </head>
+    <body>
+        Il vous est possible de consulter l'historique de consommation de chaque abonné listé ou
+        encore de les contacter directement par téléphone.<br><br>
+        <table border=1><form method="post">
+            <tr><td>Numéro d'identification</td><td>Nom</td><td>Téléphone</td></tr>
+            {% for I in IN %}
+            <tr><td>{{I[0]}}</td><td>{{I[1]}}</td><td><a href="tel:+{{I[2]}}">{{I[2]}}</a></td><td><button name="abonne_choisi" value="{{I[0]}}">Historique de consommation</button></td></tr>
+            {% endfor %}
+        </form></table>
+        <br>
+        <br>Navigation
+        <br>
+        <a href="/">Menu principal</a><br>
+        <a href="/listeBris">Liste des bris non résolus</a><br>
+        <a href="/listeVilles">Liste des villes</a><br>
+    </body>
+</html>

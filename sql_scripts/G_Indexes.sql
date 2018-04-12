@@ -1,3 +1,5 @@
+SELECT "Creation des index..." as "";
+
 CREATE INDEX LignesP1
 USING HASH
 ON Lignes(Poste1);

@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title> Réseau électrique: Liste des villes </title>
+    </head>
+    <body>
+        Voici une liste de toutes les villes faisant partie du réseau.<br>
+        Elles sont ordonnées par consommation décroissante.
+        <br>
+        <br>
+        <table border=1><form method="post">
+            <tr><td>Nom</td><td>Consommation globale</td><tr>
+            {% for I in IN %}
+            <tr><td>{{I[0]}}</td><td>{{I[1][0]}} MW</td>
+            <td><button name="button" value="abo@{{I[0]}}">Liste des abonnés</button></td>
+            <td><button name="button" value="equ@{{I[0]}}">Liste des équipements</button></td></tr>
+            {% endfor %}
+        </form></table>
+        <br>
+        <br> Navigation
+        <br>
+        <a href="/">Menu principal</a><br>
+    </body>
+</html>

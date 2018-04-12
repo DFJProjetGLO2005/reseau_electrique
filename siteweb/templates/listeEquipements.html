@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title> Réseau électrique: Liste des équipements </title>
+    </head>
+    <body>
+        Voici la liste de tous les types d'équipements situés à {{IN[0]}}.<br>
+        <table border=1>
+            <tr><td>Catégorie</td><td>Quantité</td><tr>
+            {% for I in IN[1] %}
+            <tr><td>{{I[0]}}</td><td>{{I[1]}}</td>
+            {% endfor %}
+        </table>
+        <br>
+        <br> Navigation
+        <br>
+        <a href="/listeVilles">Liste des villes</a><br>
+        <a href="/">Menu principal</a><br>
+    </body>
+</html>

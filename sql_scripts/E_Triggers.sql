@@ -1,3 +1,5 @@
+SELECT "Creation des gachettes..." as "";
+
 delimiter //
 
 ## ON UPDATE AUSSI: mettre le code dans une procedure qui sera appelée par les 2 triggers

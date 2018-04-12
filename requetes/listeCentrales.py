@@ -11,7 +11,7 @@ class ListeCentrales:
                          "eid" : c[1],
                          "puissance" : c[2],
                          "ville" : self.__trouver_ville(c[1])[0][0]})
-        return data
+        return sorted(data, key=lambda centrale: centrale["puissance"], reverse=True)
 
 
     def __trouver_ville(self, eid):

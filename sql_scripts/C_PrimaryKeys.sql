@@ -1,3 +1,5 @@
+SELECT "Assignation des cles primaires..." as "";
+
 ALTER TABLE Abonnes
 ADD PRIMARY KEY (Aid);
 

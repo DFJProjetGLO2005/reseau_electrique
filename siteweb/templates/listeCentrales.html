@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title> Réseau électrique: liste des centrales </title>
+    </head>
+    <body>
+        Voici toutes les centrales du réseau classées en ordre de puissance.<br><br>
+        <table border=1><form method="post">
+            <tr> <td>Catégorie</td><td>Identificateur</td><td>Puissance</td><td>Ville</td>
+            {% for I in IN %}
+            <tr> <td>{{I['categorie']}}</td><td>{{I['eid']}}</td><td>{{I['puissance']}} MW</td><td>{{I['ville']}}</td> </tr>
+            {% endfor %}
+        </form></table>
+        <br>
+        <br> Navigation
+        <br>
+        <a href="/">Menu principal</a><br>
+    </body>
+</html>

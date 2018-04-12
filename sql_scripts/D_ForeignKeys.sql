@@ -1,3 +1,5 @@
+SELECT "Assignation des cles etrangeres" as "";
+
 ALTER TABLE Abonnes
 ADD FOREIGN KEY (PointDeRaccordement) REFERENCES PointsDeRaccordement (Eid);
 
@@ -18,7 +20,7 @@ ADD FOREIGN KEY (Poste2) REFERENCES Postes(Eid);
 ALTER TABLE Supports
 ADD FOREIGN KEY (Eid) REFERENCES Equipements(Eid),
 ADD FOREIGN KEY (Ligne) REFERENCES Lignes(Eid),
-ADD FOREIGN KEY (Categorie) REFERENCES CategorieDeSupports(Categorie);
+ADD FOREIGN KEY (Categorie) REFERENCES CategoriesDeSupports(Categorie);
 
 ALTER TABLE Sources
 ADD FOREIGN KEY (Eid) REFERENCES Postes(Eid),

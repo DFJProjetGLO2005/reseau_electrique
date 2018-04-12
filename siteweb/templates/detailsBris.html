@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title> Réseau électrique: détails du bris </title>
+    </head>
+    <body>
+        Nombre d'abonnés affectés: {{ IN['nb_abonnes'] }}<br>
+        Estimation de la consommation rendue impossible le mois suivant le bris: {{ IN['estimation_conso'] }} kW/h<br><br>
+        <form method="post">
+            Pour consulter la liste des abonnées qui sont affectés cliquez ici:<br>
+            <button name="button" value="liste_abonnes">Liste des abonnés concernés</button><br><br>
+            Si vous choisissez de faire réparer ce bris, vous pourrez mettre la base de données à jour par ici:<br>
+            <button name="button" value="resoudre">Marquer comme réglé</button><br>
+        </form><br>
+        Conditions météorologiques au moment du bris:<br>
+        <table border=1>
+            <tr><td>Température</td><td>{{IN['meteo']['Temperature']}} °C</td></tr>
+            <tr><td>Humidité</td><td>{{IN['meteo']['Humidite']}} %</td></tr>
+            <tr><td>Pression atmosphérique</td><td>{{IN['meteo']['Pression']}} Bar</td></tr>
+            <tr><td>Pluie</td><td>{{IN['meteo']['Pluie']}} mm</td></tr>
+            <tr><td>Neige</td><td>{{IN['meteo']['Neige']}} cm</td></tr>
+            <tr><td>Couverture de neige</td><td>{{IN['meteo']['Couverture neige']}} cm</td></tr>
+        </table>
+        <br>
+        <br> Navigation
+        <br>
+        <a href="/">Menu principal</a><br>
+        <a href="/listeBris">Liste des bris non résolus</a><br>
+    </body>
+</html>

@@ -3,7 +3,5 @@ class ListeAbonnes:
         self.execute = req.execute
 
     def get_data(self, aids):
-        data = []
-        for a in aids:
-            data.append(self.execute("SELECT Aid, Nom, Telephone FROM Abonnes;"))
-        return data
+        aids = "({})".format(", ".join(str(a) for a in aids))
+        return self.execute("SELECT Aid, Nom, Telephone FROM Abonnes WHERE Aid in {};".format(aids))

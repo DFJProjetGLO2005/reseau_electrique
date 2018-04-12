@@ -21,13 +21,12 @@ if __name__ == "__main__":
     'estimation_conso': 736281.25}
     bris = {'eid': 'SUPP01981', 'date': '2016-12-13 02:43:02', 'nom': 'Support: PYLONE A TREILLIS', 'ville': 'Stornoway', 'nb_abonnes': 1, 'aids': [268], 'raccordements': ['RACC00268'], 'estimation_conso': 2691.5}
     #z = ListeBris(req).get_data("estimation_conso")
-    #z = ListeBris(req).get_liste_Details(test['eid'], test['date'], test['nom'], test['ville'], test['nb_abonnes'], test['aids'], test['raccordements'], test['estimation_conso'])
+    #z = ListeBris(req).get_liste_details(test)
     #ListeBris(req).resoudre_bris(bris['eid'], bris['date'])
-    z = ListeVilles(req).get_data()
+    #z = ListeVilles(req).get_data()
     #z = ListeCentrales(req).get_data()
-    #z = ListeEquipements(req).get_data("Durham-Sud")
-    #z = ListeAbonnes(req).get_data(test["aids"])
+    z = ListeEquipements(req).get_data("Durham-Sud")
+    #z = ListeAbonnes(req).get_data([1,2,3])
     #z = ListeConsommationsMensuelles(req).get_data(123)
-    print(z)
-    #for i in z:
-    #    print(i)
+    for i in z[1]:
+        print(i)

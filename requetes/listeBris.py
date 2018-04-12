@@ -7,7 +7,11 @@ class ListeBris:
 
     def get_data(self, priorite):
         liste_bris = []
-        bris = self.execute("SELECT Eid, CAST(Debut AS CHAR) FROM Bris WHERE Fin IS NOT NULL;")
+        bris = self.execute("SELECT Eid, CAST(Debut AS CHAR) FROM Bris WHERE Fin IS NULL;")
+        if priorite == "date":
+            rev_order = False
+        else:
+            rev_order = True
         for b in bris:
             eid = b[0]
             debut = b[1]
@@ -16,10 +20,7 @@ class ListeBris:
             estimation_conso = 0
             nom = self.get_equipement_nom(eid)
             ville = self.__trouver_ville(eid)[0][0]
-            rev_order = True
-            if priorite == "date": rev_order = False
-            else:
-                rev_order = True
+            if priorite != "date":
                 self.__trouver_raccordements(eid, raccordements)
                 if priorite == "estimation_conso":
                     aids = self.__trouver_abonnes_racc(raccordements)
@@ -36,16 +37,16 @@ class ListeBris:
 
 
 
-    def get_liste_Details(self, eid, debut, nom, ville, nb_abonnes, aids, raccordements, estimation_conso):
-        details_bris = []
-        if raccordements == []:
-            self.__trouver_raccordements(eid, raccordements)
-            aids = self.__trouver_abonnes_racc(raccordements)
-            estimation_conso = self.__estimation_conso(aids, debut)
-        meteo = self.trouver_meteo(ville, debut)
-        return {"eid" : eid, "nom" : nom, "ville" : ville, "date" : debut,
-                "nb_abonnes": len(raccordements), "aids" : aids,
-                "estimation_conso": estimation_conso, "meteo" : meteo}
+    def get_liste_details(self, bris):
+        if bris['raccordements'] == []:
+            self.__trouver_raccordements(bris['eid'], bris['raccordements'])
+        if bris['aids'] == []:
+            bris['aids'] = self.__trouver_abonnes_racc(bris['raccordements'])
+        if bris['estimation_conso'] == 0:
+            bris['estimation_conso'] = self.__estimation_conso(bris['aids'], bris['date'])
+        return {"eid" : bris['eid'], "nom" : bris['nom'], "ville" : bris['ville'], "date" : bris['date'],
+                "nb_abonnes": len(bris['raccordements']), "aids" : bris['aids'],
+                "estimation_conso": bris['estimation_conso'], "meteo" : self.trouver_meteo(bris['ville'], bris['date'])}
 
     def resoudre_bris(self, eid, debut):
         self.execute("UPDATE Bris SET Fin=NOW() WHERE Eid='{0}' AND Debut=STR_TO_DATE('{1}', '%Y-%m-%d %H:%i:%s');".format(eid, debut))
@@ -99,7 +100,7 @@ class ListeBris:
                    FROM ConsommationsMensuelles\
                    WHERE Aid={0} AND (DATEDIFF("{1}", Mois) < 93) AND Mois < "{1}";'.format(aid, debut)
             estimation += self.execute(req)[0][0]
-        return float(estimation)
+        return round(float(estimation),2)
 
 
     def __trouver_ville(self, eid):

@@ -1,16 +1,30 @@
 <html>
     <head>
-        <title> Titre de la page </title>
+        <title> Réseau électrique </title>
     </head>
     <body>
-        <form>
-            <input type="text" name="idText"><br>
-            <script type="text/javascript">
 
-                eval('var maliste = {{ maliste }};');
+        <form method="post">
+        <fieldset><legend>Bris non résolus</legend>
+        <p>
+          <label>Trier par</label></br>            
+          <input type = "radio" name = "ordre_bris" value = "estimation_conso" checked="checked">
+          <label>Besoin des abonnés</label>
 
-                document.write(maliste['hello']);
-            </script>
-        </form>
+          <input type = "radio" name = "ordre_bris" value = "nb_abonnes"> 
+          <label>Nombre d'abonnées affectés</label>
+
+          <input type = "radio" name = "ordre_bris" value = "date">
+          <label>Ancienneté du bris</label>
+          <button name="button" value"liste_bris">Consulter</button>
+        </p>
+        </fieldset>
+        <fieldset><legend>Liste des villes</legend>
+            <button name="button" value="liste_villes">Consulter</button><br><br>
+        </fieldset>
+        <fieldset><legend>Liste des centrales</legend>
+            <button name="button" value="liste_centrales">Consulter</button><br>
+        </fieldset>
+        </form><br>
     </body>
 </html>
