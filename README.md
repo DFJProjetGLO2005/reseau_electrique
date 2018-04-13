@@ -1,10 +1,12 @@
-Installation
+Utilisation
 ------------
 Pour tester l'application sur votre système, veuillez exécuter le script python **installation.py**.</br>
 Celui-ci vous permettra de:</br>
-    .générer les données ./csv\_generator/main.py</br>
-    .générer la base de données ./sql\_scripts/main.sql</br>
-    .démarrer le serveur web ./siteweb/serveur\_applicatif.py</br>
+    .générer les données via ./csv\_generator/main.py</br>
+    .générer la base de données via ./sql\_scripts/main.sql</br>
+    .démarrer le serveur web via ./siteweb/serveur\_applicatif.py</br>
+En tout temps, il est possible d'executer manuellement l'un des trois scripts cités ci-haut pour
+par exemple démarrer le serveur web sans avoir à regénérer de réseau électrique.
 
 
 # Modèle entité-relation
