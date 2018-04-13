@@ -1,9 +1,25 @@
 from functools import reduce
 
+"""
+    Brief: Cette classe permet de faire les requêtes nécessaires
+           pour afficher la page listeVilles.html du siteweb.
+"""
 class ListeVilles:
+    """
+        Brief: Le constructeur donne à l'instance courante la possibilité
+               de faire des requêtes mysql grâce à une instance de la classe
+               Requêtes passée en argument.
+    """
     def __init__(self, req):
         self.execute = req.execute
 
+    """
+        Brief: Cette méthode permet de lister toutes les villes du réseau
+               et de calculer pour chacunes d'elles la consommation mensuelle
+               moyenne de la somme de ses habitants en MW.
+        Return: Une liste de tuples
+                (Nom de ville, (Consommation, [aids]))
+    """
     def get_data(self):
         villes = {}
         for v in self.execute('SELECT Nom FROM Villes;'):

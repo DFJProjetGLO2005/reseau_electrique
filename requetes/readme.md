@@ -26,8 +26,9 @@ listeBris.html
 detailsBris.html
 ----------------
     fichier: listeBris.py
-    méthode: ListeBris(req).get_liste_Details(eid, debut, nom, ville, nb_abonnes, aids, raccordements, estimation_conso)
-    params: Ils proviennent de la requête faite pour listeBris.html
+    méthode: ListeBris(req).get_liste_Details(bris)
+    param:  Un dictionnaire contenant les informations relatives à un bris.
+            Ce dictionnaire pourra être généré avec get_data
     bouton résoudre bris: ListeBris(req).resoudre_bris(eid, date)
     retour: Un dictionnaire ayant pour clés
             "eid"               Le id de l'équipement brisé

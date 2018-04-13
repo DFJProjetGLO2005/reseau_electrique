@@ -4,7 +4,8 @@
     </head>
     <body>
         Nombre d'abonnés affectés: {{ IN['nb_abonnes'] }}<br>
-        Estimation de la consommation rendue impossible le mois suivant le bris: {{ IN['estimation_conso'] }} kW/h<br><br>
+        Estimation de la consommation qui aurait eut lieu le mois suivant si le bris ne s'était pas produit: {{ IN['estimation_conso'] }} kW/h<br>
+        Cette estimation est faite à partir de la somme des moyennes de consommation sur les trois mois précédent l'incident pour tous les abonnés affectés.<br><br>
         <form method="post">
             Pour consulter la liste des abonnées qui sont affectés cliquez ici:<br>
             <button name="button" value="liste_abonnes">Liste des abonnés concernés</button><br><br>

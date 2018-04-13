@@ -8,10 +8,12 @@ from listeConsommationsMensuelles import ListeConsommationsMensuelles
 
 
 
-
+"""
+    Brief: Ce script permet de tester les différentes requêtes. 
+"""
 
 if __name__ == "__main__":
-    req = Requetes(input("user"), input("password"))
+    req = Requetes(input("user: "), input("password: "))
     test = {'eid': 'SUPP24046',
     'date': "2016-05-09 23:02:52",
     'nom': 'Support: PYLONE HAUBANE A CHAINETTE',
@@ -23,9 +25,9 @@ if __name__ == "__main__":
     #z = ListeBris(req).get_data("estimation_conso")
     #z = ListeBris(req).get_liste_details(test)
     #ListeBris(req).resoudre_bris(bris['eid'], bris['date'])
-    #z = ListeVilles(req).get_data()
+    z = ListeVilles(req).get_data()
     #z = ListeCentrales(req).get_data()
-    z = ListeEquipements(req).get_data("Durham-Sud")
+    #z = ListeEquipements(req).get_data("Durham-Sud")
     #z = ListeAbonnes(req).get_data([1,2,3])
     #z = ListeConsommationsMensuelles(req).get_data(123)
     for i in z[1]:
