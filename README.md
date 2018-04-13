@@ -1,6 +1,6 @@
 Installation
 ------------
-Pour tester l'application sur votre système, veuillez exécuter le script python "installation.py".</br>
+Pour tester l'application sur votre système, veuillez exécuter le script python **installation.py**.</br>
 Celui-ci vous permettra de:</br>
     .générer les données ./csv\_generator/main.py</br>
     .générer la base de données ./sql\_scripts/main.sql</br>
