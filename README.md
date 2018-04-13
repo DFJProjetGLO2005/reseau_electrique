@@ -10,27 +10,27 @@ Celui-ci vous permettra de:</br>
 ![alt text](https://i.imgur.com/jvoIsEs.jpg)
 
 # Modèle relationel
-**Abonnés** (__Aid : int__, Nom : char(20), Téléphone : char(8), Point de raccordement : char(9))<br>
-**Consommations mensuelles** (__Aid : int__, __Mois : int__, Puissance (kW/h) : real)<br>
+**Abonnés** ('Aid : int', Nom : char(20), Téléphone : char(8), Point de raccordement : char(9))<br>
+**Consommations mensuelles** ('Aid : int', 'Mois : int', Puissance (kW/h) : real)<br>
 
-**Équipements** (__Eid : char(9)__)<br>
-**Centrales** (__Eid : char(9)__, Poste source : char(9), Categorie : enum, Puissance (MW) : real)<br> 
-**Lignes** (__Eid : char(9)__, Tension : int, Courant : int, Categorie : enum, Longueur : int, Poste 1 : char(9), Poste 2 : char(9))<br>
+**Équipements** ('Eid : char(9)')<br>
+**Centrales** ('Eid : char(9)', Poste source : char(9), Categorie : enum, Puissance (MW) : real)<br> 
+**Lignes** ('Eid : char(9)', Tension : int, Courant : int, Categorie : enum, Longueur : int, Poste 1 : char(9), Poste 2 : char(9))<br>
 
-**Supports** (__Eid : char(9)__, Ligne : char(9), Lieu : Geometry, Categorie : enum)<br>
-**Categories de supports** (__Categorie : enum__, Portée : int, Poids : int, Hauteur : int)<br>
+**Supports** ('Eid : char(9)', Ligne : char(9), Lieu : Geometry, Categorie : enum)<br>
+**Categories de supports** ('Categorie : enum', Portée : int, Poids : int, Hauteur : int)<br>
 
-**Postes** (__Eid : char(9)__, Lieu : Geometry)<br>
-**Sources** (__Eid : char(9)__, Centrale : char(9))<br>
-**Satellites** (__Eid : char(9)__)<br>
-**Stratégiques** (__Eid : char(9)__)<br>
-**Transformateurs sur poteau de bois** (__Eid : char(9)__)<br>
-**Points de raccordement** (__Eid : char(9)__, Abonne : int)<br>
+**Postes** ('Eid : char(9)', Lieu : Geometry)<br>
+**Sources** ('Eid : char(9)', Centrale : char(9))<br>
+**Satellites** ('Eid : char(9)')<br>
+**Stratégiques** ('Eid : char(9)')<br>
+**Transformateurs sur poteau de bois** ('Eid : char(9)')<br>
+**Points de raccordement** ('Eid : char(9)', Abonne : int)<br>
 
-**Bris** (__Eid : char(9)__, __Début : DateTime__, Fin : DateTime)<br>
+**Bris** ('Eid : char(9)', 'Début : DateTime', Fin : DateTime)<br>
 
 
-**Villes** (__Nom : char(20)__, Lieu : Geometry)<br>
-**Conditions météorologiques** (__Ville : char(20)__, __Heure : DateTime__, Température : int, Taux d’humidité : real, Pression atmosphérique : real, Chute de pluie : int, Chute de neige : int, Couverture de neige : int)<br>
+**Villes** ('Nom : char(20)', Lieu : Geometry)<br>
+**Conditions météorologiques** ('Ville : char(20)', 'Heure : DateTime', Température : int, Taux d’humidité : real, Pression atmosphérique : real, Chute de pluie : int, Chute de neige : int, Couverture de neige : int)<br>
 
 
