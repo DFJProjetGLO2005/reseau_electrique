@@ -1,10 +1,23 @@
 
+"""
+    Brief: Cette classe permet de faire les requêtes nécessaires
+           pour afficher les pages listeBris.html et detailsBris.html
+"""
 class ListeBris:
+    """
+        Brief: Le constructeur donne à l'instance courante la possibilité
+               de faire des requêtes mysql grâce à une instance de la classe
+               Requêtes passée en argument.
+    """
     def __init__(self, req):
         self.execute = req.execute
         self.commit = req.con.commit
 
 
+    """
+        Brief: Cette méthode retourne la liste des bris non résolus.
+        Param[in]: 
+    """
     def get_data(self, priorite):
         liste_bris = []
         bris = self.execute("SELECT Eid, CAST(Debut AS CHAR) FROM Bris WHERE Fin IS NULL;")

@@ -2,9 +2,6 @@ La classe Requetes permet d'intéragir avec la base de données.<br>
 Les autres classes sont associés à une page du site et nécessitent une instance de Requetes afin d'être fonctionnelles.<br>
 Dans les exemples suivants on imagine que "req" est une instance de Requetes.<br>
 
-# Schéma du site web
-![alt text](https://i.imgur.com/qH5ukFj.jpg)
-
 listeBris.html
 --------------
     fichier: listeBris.py
@@ -96,4 +93,7 @@ listeVilles.html
     retour: Une liste de tuples
             (Nom de ville, (Consommation, [aids]))
 
+
+# Schéma du site web
+![alt text](https://i.imgur.com/qH5ukFj.jpg)
 
