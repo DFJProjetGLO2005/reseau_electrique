@@ -3,6 +3,7 @@ from flask import request
 from flask import render_template
 from flask import url_for
 from flask import redirect
+from flask import flash
 import util
 import sys, os, getpass
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
@@ -16,13 +17,15 @@ from listeBris import ListeBris
 
 app = Flask(__name__)
 req = util.connect_db()
+util.define_admin_password(req)
 
 
 
 """
     Brief: Ce conteneur permet d'échanger des données entre
            les différentes pages et évite de dupliquer inutilement
-           des requêtes à la base de données.
+           dest
+           requêtes à la base de données.
 """
 cache = {}
 
@@ -82,12 +85,18 @@ def details_bris():
         if request.form.get("button") == "liste_abonnes":
             cache["liste_abonnes"] = cache["details_bris"]["aids"]
             return redirect(url_for('liste_abonnes'))
-        else: 
-            ListeBris(req).resoudre_bris(cache["details_bris"]["eid"], cache["details_bris"]["date"])
-            return redirect(url_for('liste_bris'))
+        elif request.form.get("button") == "resoudre":
+            if ListeBris(req).check_password(request.form.get("password")):
+                ListeBris(req).resoudre_bris(cache["details_bris"]["eid"], cache["details_bris"]["date"])
+                return redirect(url_for('liste_bris'))
+            else:
+                return redirect(url_for('attention'))
     return render_template("detailsBris.html", IN=cache["details_bris"]) 
 
 
+@app.route("/attention")
+def attention():
+    return render_template("attention.html")
 
 
 """

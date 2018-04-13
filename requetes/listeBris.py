@@ -1,3 +1,4 @@
+from hashlib import sha256
 
 """
     Brief: Cette classe permet de faire les requêtes nécessaires
@@ -93,6 +94,18 @@ class ListeBris:
         return {"eid" : bris['eid'], "nom" : bris['nom'], "ville" : bris['ville'], "date" : bris['date'],
                 "nb_abonnes": len(bris['raccordements']), "aids" : bris['aids'],
                 "estimation_conso": bris['estimation_conso'], "meteo" : self.__trouver_meteo(bris['ville'], bris['date'])}
+
+
+    """
+        Brief: Cette méthode vérifie si le mot de passe donné correspond bien
+               au mot de passe haché dans la base de données.
+        Param[in]: Le mot de passe à tester sous forme de string.
+        Return: 0 ou 1, tout dépendant du résultat de la vérification.
+    """
+    def check_password(self, password):
+        password = sha256(password.encode()).hexdigest()
+        return self.execute('SELECT COUNT(*) FROM AdminPassword\
+                             WHERE Password="{}" LIMIT 1;'.format(password))[0][0]
 
     """
         Brief: Cette méthode est appelée par la page detailsBris.html et permet
