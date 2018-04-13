@@ -8,7 +8,18 @@
         <form method="post">
         <fieldset><legend>Bris non résolus</legend>
         <p>
-          <label>Trier par</label></br>            
+          Afin de vous concentrer sur les bris qui sont les plus importants, il vous est possible de
+          les trier par priorités.<br>
+          .L'ordre de priorités "Nombre d'abonnés affectés" parle d'elle-même.
+          .L'ordre de priorités "Besoin des abonnés" calcule un estimé de la
+          consommation qui aurait lieu si le bris n'était pas arrivé. Cet estimé correspond
+          à la somme des consommations moyennes sur les trois mois précédant le bris pour
+          tous les abonnés affectés. Elle diffère de la dernière par le fait qu'on considère
+          un abonné consommant 3 comme plus important que deux abonnés consommant 1.<br>
+          .L'ordre de priorités "Ancienneté du bris" permet d'éviter la famine. Bien qu'un
+          bris n'occasionnant pas de grand trou énergétique, cet ordre de priorité permet
+          de ne pas trop faire patienter les abonnés ayant une consommation plus modeste.<br>
+          <label>Priorité:</label></br>            
           <input type = "radio" name = "ordre_bris" value = "estimation_conso" checked="checked">
           <label>Besoin des abonnés</label>
 
