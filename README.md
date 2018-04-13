@@ -34,3 +34,7 @@ Celui-ci vous permettra de:</br>
 **Conditions météorologiques** (__Ville : char(20)__, __Heure : DateTime__, Température : int, Taux d’humidité : real, Pression atmosphérique : real, Chute de pluie : int, Chute de neige : int, Couverture de neige : int)<br>
 
 
+
+# Schéma du site web
+![alt text](https://i.imgur.com/qH5ukFj.jpg)
+
