@@ -24,8 +24,7 @@ util.define_admin_password(req)
 """
     Brief: Ce conteneur permet d'échanger des données entre
            les différentes pages et évite de dupliquer inutilement
-           dest
-           requêtes à la base de données.
+           les requêtes à la base de données.
 """
 cache = {}
 
@@ -36,6 +35,11 @@ cache = {}
            Chacun de ses bouton déclenche une autre fonction associée.
            Le radio button règle l'ordre de présentation des bris.
            Cette fonction inscrit des données dans le conteneur global cache.
+           La page affichée contient trois boutons:
+           liste_villes: Qui charge la page listeVilles.html
+           liste_centrales: Qui charge la page listeCentrales.html
+           liste_bris: Qui vérifie l'état du sélecteur radio "ordre_bris"
+                       et qui charge la page listeBris.html
 """
 @app.route("/", methods=["GET", "POST"])              
 def main():
@@ -58,6 +62,9 @@ def main():
     Brief: Cette fonction permet de rendre la page de la liste des bris.
            Elle puise et inscrit des données dans le conteneur global cache.
            Elle est préalable au chargement de la page des détails de bris.
+           Cette page contient une série de boutons "bris_choisis" qui ont
+           tous comme valeur l'identificateur du bris choisi.
+           Ce bouton charge la page detailsBris.html
 """
 @app.route("/listeBris", methods=["GET", "POST"])      
 def liste_bris():
@@ -77,6 +84,14 @@ def liste_bris():
     Brief: Cette fonction permet de rendre la page des détails de bris.
            Elle puise et inscrit des données dans le conteneur global cache.
            Cette fonction ou liste_ville sont préalables à liste_abonnes. 
+           Cette page contient deux boutons:
+           "liste_abonnes": Qui affiche la liste des abonnées affectés
+            par le bris courant via listeAbonnes.html
+           "resoudre": Qui marque le bris sélectionné comme résolu
+            en date de maintenant. Puisque l'utilisation abusive
+            de ce bouton serait néfaste pour la base de données,
+            il sera nécessaire de vérifier que le mot de passe entré
+            dans la boîte "password" est correct.
 """
 @app.route("/detailsBris", methods=["GET", "POST"])
 def details_bris():
@@ -94,6 +109,11 @@ def details_bris():
     return render_template("detailsBris.html", IN=cache["details_bris"]) 
 
 
+
+"""
+    Brief: Cette page affiche un avertissement comme quoi
+           un mot de passe entré est incorrect.
+"""
 @app.route("/attention")
 def attention():
     return render_template("attention.html")
@@ -106,6 +126,10 @@ def attention():
            données du cconteneur cache. Cette fonction est préalable à
            la fonction liste_consommations_mensuelles et inscrit au 
            conteneur cache les informations qui y seront nécessaires.
+           Cette page contient une série de boutons identifiés par "abonne_choisi".
+           Chacun de ces boutons a comme valeur l'identificateur de l'abonné.
+           Ce bouton charge la page listeConsommationsMensuelles.html
+        
 """
 @app.route("/listeAbonnes", methods=["GET", "POST"])
 def liste_abonnes():
@@ -148,6 +172,12 @@ def liste_centrales():
            villes. Elle est préalable à liste_equipements et 
            liste_abonnes. Elle puise et inscrit des informations
            au conteneur cache.
+           Cette page contient une série de boutons ayant pour valeurs possibles:
+           "abo*": Affiche la liste des abonnés qui habitent
+            la ville * sélectionnée via listeAbonnes.html
+           "equ*": Affiche la liste des équipements situés dans
+            la vilel * sélectionnée via listeEquipements.html
+            
 """
 @app.route("/listeVilles", methods=["GET", "POST"])
 def liste_villes():

@@ -22,6 +22,12 @@ def connect_db():
         except Exception as e: print("\n  Nom d'utilisateur ou mot de passe incorrect.\n")
 
 
+"""
+    Brief: Cette fonction crée un mot de passe d'administration dans la base de données
+           Il est pas défaut "12345"
+    Param[in]: Une instance de la classe Requetes permettant d'acheminer les requêtes
+               nécessaires vers la base de données.
+"""
 def define_admin_password(req):
     req.execute('DROP TABLE IF EXISTS AdminPassword;')
     req.execute('CREATE TABLE AdminPassword (Password CHAR(64));')
