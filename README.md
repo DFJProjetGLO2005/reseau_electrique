@@ -1,6 +1,7 @@
 Utilisation
 ------------
 Pour tester l'application sur votre système, veuillez exécuter le script python **installation.py**.</br>
+Assurez-vous que les exécutables mysql et python sont inclus au path du système.
 
 __Le mot de passe d'administration nécessaire pour marquer un bris comme résolu est "12345".__
 
