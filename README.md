@@ -1,8 +1,11 @@
 Utilisation
 ------------
 Exécuter dans l'ordre:
+
 .csv_generator/main.py avec l'exécutable python pour générer les données
+
 .sql_scripts/main.sql avec l'exécutable mysql pour créer la base de données
+
 .siteweb/serveur_applicatif.py avec l'exécutable python pour démarrer le serveur du siteweb 
 
 __Le mot de passe d'administration nécessaire pour marquer un bris comme résolu est "12345".__
