@@ -49,7 +49,7 @@ class ListeBris:
             if priorite != "date":
                 self.__trouver_raccordements(eid, raccordements)
                 if priorite == "estimation_conso":
-                    aids = self.__trouver_abonnes_racc(raccordements)
+                    #aids = self.__trouver_abonnes_racc(raccordements)
                     estimation_conso = self.__estimation_conso(aids, debut)
             liste_bris.append({"eid" : eid,
                                "date": debut,
@@ -179,7 +179,7 @@ class ListeBris:
     def __trouver_abonnes_racc(self, raccordements):
         abonnes = []
         for r in raccordements:
-            abonnes.append(self.execute('SELECT Aid FROM Abonnes WHERE PointDeRaccordement="{}";'.format(r))[0][0])
+            abonnes.append(self.execute('SELECT Abonne FROM Abonnes WHERE PointDeRaccordement="{}";'.format(r))[0][0])
         return abonnes
 
     """

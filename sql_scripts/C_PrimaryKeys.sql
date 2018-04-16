@@ -17,6 +17,9 @@ ADD PRIMARY KEY (Eid);
 ALTER TABLE Lignes
 ADD PRIMARY KEY (Eid);
 
+ALTER TABLE Lignes
+ADD UNIQUE (Poste2);
+
 ALTER TABLE Supports
 ADD PRIMARY KEY (Eid);
 
@@ -38,8 +41,12 @@ ADD PRIMARY KEY (Eid);
 ALTER TABLE TransformateursSurPoteauDeBois
 ADD PRIMARY KEY (Eid);
 
+
 ALTER TABLE Bris
 ADD PRIMARY KEY (Eid, Debut);
+
+
+
 
 
 ALTER TABLE ConditionsMeteorologiques

@@ -15,12 +15,6 @@ OPTIONALLY ENCLOSED BY '"'
 (Aid, @m, Puissance)
 SET Mois = STR_TO_DATE(@m, '%Y-%m-%d %H:%i:%s')//
 
-SELECT "Chargement des equipements..." as "";
-LOAD DATA LOCAL INFILE "../csv_files/EQUIPEMENTS.csv"
-INTO TABLE Equipements
-FIELDS TERMINATED BY ','
-OPTIONALLY ENCLOSED BY '"'
-(Eid)//
 
 SELECT "Chargement des centrales..." as "";
 LOAD DATA LOCAL INFILE "../csv_files/CENTRALES.csv"
@@ -54,14 +48,6 @@ OPTIONALLY ENCLOSED BY '"'
 
 
 SELECT "Chargement des postes..." as "";
-LOAD DATA LOCAL INFILE "../csv_files/POSTES.csv"
-INTO TABLE Postes
-FIELDS TERMINATED BY ','
-OPTIONALLY ENCLOSED BY '"'
-(Eid, @l)
-SET Lieu = POLYGONFromText(@l)//
-
-
 LOAD DATA LOCAL INFILE "../csv_files/SOURCES.csv"
 INTO TABLE Sources
 FIELDS TERMINATED BY ','
@@ -91,6 +77,22 @@ INTO TABLE TransformateursSurPoteauDeBois
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 (Eid)//
+
+LOAD DATA LOCAL INFILE "../csv_files/POSTES.csv"
+INTO TABLE Postes
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+(Eid, @l)
+SET Lieu = POLYGONFromText(@l)//
+
+
+SELECT "Chargement des equipements..." as "";
+LOAD DATA LOCAL INFILE "../csv_files/EQUIPEMENTS.csv"
+INTO TABLE Equipements
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+(Eid)//
+
 
 SELECT "Chargement des bris..." as "";
 LOAD DATA LOCAL INFILE "../csv_files/BRIS.csv"

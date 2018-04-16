@@ -1,3 +1,4 @@
+
 SET FOREIGN_KEY_CHECKS=0;
 source A_Init.sql
 source B_CreateTables.sql
