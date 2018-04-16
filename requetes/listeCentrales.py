@@ -39,5 +39,5 @@ class ListeCentrales:
     def __trouver_ville(self, eid):
         return self.execute('SELECT Nom FROM Villes V WHERE MBRContains(V.Lieu,\
                             (SELECT Lieu FROM Postes WHERE Eid=\
-                             (SELECT PosteSource FROM CENTRALES WHERE Eid = "{}")));'.format(eid))
+                             (SELECT PosteSource FROM Centrales WHERE Eid = "{}")));'.format(eid))
 
