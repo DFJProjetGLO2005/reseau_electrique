@@ -35,4 +35,4 @@ sql_scripts/
     contenus dans csv_generator/. Bien que installation.py se charge de créer
     la base de données, il vous est possible de répéter l'opération en
     exécutant sql_scripts/main.sql, si csv_generator a déjà été exécuté
-    et donc, que le dossier CSV/ existe. 
+    et donc, que le dossier csv_files/ existe. 
