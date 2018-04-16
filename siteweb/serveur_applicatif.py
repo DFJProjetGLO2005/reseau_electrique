@@ -12,7 +12,7 @@ from listeBris import ListeBris
 from requetes import Requetes
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=util.get_templates_path())
 req = util.connect_db(Requetes)
 util.define_admin_password(req)
 
@@ -202,4 +202,4 @@ def liste_equipements():
     return render_template("listeEquipements.html", IN=cache["liste_equipements"])
 
 if __name__ == "__main__":
-    app.run()
+    app.run('0.0.0.0')

@@ -179,7 +179,7 @@ class ListeBris:
     def __trouver_abonnes_racc(self, raccordements):
         abonnes = []
         for r in raccordements:
-            abonnes.append(self.execute('SELECT Abonne FROM Abonnes WHERE PointDeRaccordement="{}";'.format(r))[0][0])
+            abonnes.append(self.execute('SELECT Aid FROM Abonnes WHERE PointDeRaccordement="{}";'.format(r))[0][0])
         return abonnes
 
     """

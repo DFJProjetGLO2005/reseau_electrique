@@ -39,6 +39,15 @@ def define_admin_password(req):
 def cd_script_path():
     os.chdir(str(Path(__file__).resolve().parent)) 
 
+
+"""
+    Brief: Cette fonction fournit le path du dossier templates et semble
+           être nécessaire sur Linux.
+"""
+def get_templates_path():
+    return "{}/templates".format(Path(__file__).resolve().parent) 
+
+
 """
     Brief: Cette fonction prend une entrée texte, la hache et retourne son résultat haché
     Param[in]: Le texte a hacher
