@@ -94,7 +94,3 @@ listeVilles.html
     retour: Une liste de tuples
             (Nom de ville, (Consommation, [aids]))
 
-
-# Schéma du site web
-![alt text](https://i.imgur.com/qH5ukFj.jpg)
-

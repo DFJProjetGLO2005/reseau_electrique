@@ -13,3 +13,9 @@ Ce dossier contient tous les fichiers html constituant le siteweb.
 util.py
 -------
 Ce fichier contient quelques utilitaires pour le serveur applicatif.
+
+
+
+# Schéma du site web
+![alt text](https://i.imgur.com/qH5ukFj.jpg)
+
