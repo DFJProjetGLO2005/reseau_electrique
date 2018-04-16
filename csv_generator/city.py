@@ -1,5 +1,5 @@
 import random
-import dill as pickle
+import pickle
 import util
 
 """
