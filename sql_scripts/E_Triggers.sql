@@ -82,7 +82,8 @@ BEGIN
         (P1 = P2) OR
         (P1 LIKE "TRAN%" AND NOT (P2 LIKE "TRAN%" OR P2 LIKE "RACC%")) OR
         (((P1 LIKE "SATE%") OR (P1 LIKE "STRA%")) AND (P2 LIKE "RACC%")) OR
-        (P2 LIKE "SOUR%"))
+        (P2 LIKE "SOUR%") OR
+        (Eid NOT LIKE "LIGN%"))
     THEN SET EID = NULL;
     END IF;
 END//
@@ -122,25 +123,6 @@ CREATE TRIGGER EidCentralesCorrectUpdate
 BEFORE UPDATE ON Centrales
 FOR EACH ROW
 CALL EidCentralesCorrect(NEW.Eid)//
-
-
-
-CREATE PROCEDURE EidLignesCorrect(INOUT EID CHAR(9))
-BEGIN
-    IF (Eid NOT LIKE "LIGN%")
-    THEN SET Eid = NULL;
-    END IF;
-END//
-
-CREATE TRIGGER EidLignesCorrectInsert
-BEFORE INSERT ON Lignes
-FOR EACH ROW
-CALL EidLignesCorrect(NEW.Eid)//
-
-CREATE TRIGGER EidLignesCorrectUpdate
-BEFORE UPDATE ON Lignes
-FOR EACH ROW
-CALL EidLignesCorrect(NEW.Eid)//
 
 
 

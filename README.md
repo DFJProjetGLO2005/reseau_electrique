@@ -1,16 +1,12 @@
 Utilisation
 ------------
-Exécuter dans l'ordre:
+Pour installer la base de données suivre ces étapes:
 
-.csv_generator/main.py avec l'exécutable python pour générer les données
-
-.sql_scripts/main.sql avec l'exécutable mysql pour créer la base de données
-
-.siteweb/serveur_applicatif.py avec l'exécutable python pour démarrer le serveur du siteweb 
+- Exécuter csv_generator/main.py avec l'exécutable python3 pour générer les données<br>
+- Se déplacer dans le dossier sql_scripts/ et exécuter main.sql avec l'exécutable mysql pour créer la base de données. La commande devrait ressembler à "mysql -u utilisateur -p \< main.sql".<br>
+- Revenir au dossier initial et exécuter siteweb/serveur_applicatif.py avec l'exécutable python3 pour démarrer le serveur du siteweb. 
 
 __Le mot de passe d'administration nécessaire pour marquer un bris comme résolu est "12345".__
-
-
 Ce readme n'est que partiel et ses suites se trouvent dans les différents dossiers de ce dépôt.
 
 
