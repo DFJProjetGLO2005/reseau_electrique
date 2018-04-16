@@ -129,3 +129,5 @@ CREATE TABLE ConditionsMeteorologiques
     ChuteDeNeige INT,
     CouvertureDeNeige INT
 );
+
+CREATE TABLE AdminPassword (Password CHAR(64));

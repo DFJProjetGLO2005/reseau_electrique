@@ -29,8 +29,6 @@ def connect_db():
                nécessaires vers la base de données.
 """
 def define_admin_password(req):
-    req.execute('DROP TABLE IF EXISTS AdminPassword;')
-    req.execute('CREATE TABLE AdminPassword (Password CHAR(64));')
     req.execute('INSERT INTO AdminPassword VALUES ("{}");'.format(hash_password("12345")))
     req.con.commit()
 

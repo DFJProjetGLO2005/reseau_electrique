@@ -14,7 +14,7 @@ def clear_screen():
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
-subprocess.call(["python", "csv_generator/main.py"])
+os.system("python csv_generator/main.py")
 os.chdir("sql_scripts")
 
 # Scripts du dossier /sql_scripts
@@ -25,6 +25,5 @@ utilisateur = input("Nom d'utilisateur: ")
 os.system("mysql -u {0} -p < main.sql".format(utilisateur))   
 
 # Scripts du dossier /siteweb
-clear_screen()
 print("Vous serez maintenant appelé à entrer vos information de nouveau afin d'activer le serveur web.")
-subprocess.call(["python", "../siteweb/serveur_applicatif.py"])
+os.system("python ../siteweb/serveur_applicatif.py")
