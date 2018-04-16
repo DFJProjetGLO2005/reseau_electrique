@@ -1,12 +1,7 @@
-from flask import Flask
-from flask import request
-from flask import render_template
-from flask import url_for
-from flask import redirect
-from flask import flash
-import util
+from flask import Flask, request, render_template, url_for, redirect, flash
 import sys, os, getpass
-os.chdir(os.path.dirname(os.path.realpath(__file__)))
+import util
+util.cd_script_path()
 sys.path.append("../requetes")
 from listeConsommationsMensuelles import ListeConsommationsMensuelles
 from listeEquipements import ListeEquipements
@@ -14,9 +9,11 @@ from listeCentrales import ListeCentrales
 from listeAbonnes import ListeAbonnes
 from listeVilles import ListeVilles
 from listeBris import ListeBris
+from requetes import Requetes
+
 
 app = Flask(__name__)
-req = util.connect_db()
+req = util.connect_db(Requetes)
 util.define_admin_password(req)
 
 
